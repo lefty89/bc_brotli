@@ -1,0 +1,4 @@
+# cat=basic/enable; type=text; label=Github repository url
+repository = https://github.com/google/brotli
+# cat=basic/enable; type=text; label=Branch or commit hash
+branch = master
