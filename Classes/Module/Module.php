@@ -27,7 +27,13 @@ use ZipArchive;
 use Exception;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 
-
+/**
+ * Class for binary creation
+ *
+ * @author Lefty (fb.lefty@web.de)
+ * @package TYPO3
+ * @subpackage bc_brotli
+ */
 class Module
 {
     const STATE_WARNING = 3;
@@ -402,5 +408,4 @@ class Module
         // closes the connection
         $this->closeConnection();
     }
-
 }

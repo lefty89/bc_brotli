@@ -26,10 +26,12 @@ namespace BC\BcBrotli\Compressor;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Core\Utility\PathUtility;
 
-
 /**
- * Class RenderController
- * @package BC\BcBrotli\Compressor
+ * The resource compressor class
+ *
+ * @author Lefty (fb.lefty@web.de)
+ * @package TYPO3
+ * @subpackage bc_brotli
  */
 class ResourceCompressor extends \TYPO3\CMS\Core\Resource\ResourceCompressor
 {

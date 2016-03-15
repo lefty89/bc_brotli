@@ -27,8 +27,11 @@ use BC\BcBrotli\Compressor\ResourceCompressor;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 
 /**
- * Class RenderController
- * @package BC\BcBrotli\Hook
+ * Hook class for custom resource compressor
+ *
+ * @author Lefty (fb.lefty@web.de)
+ * @package TYPO3
+ * @subpackage bc_brotli
  */
 class ResourceCompressHook
 {
