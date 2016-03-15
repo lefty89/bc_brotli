@@ -8,7 +8,6 @@ document.querySelector('#update-button').addEventListener('click', function(e){
 
     startUpdate();
 
-
     /**
      * start update with continuous message
      */

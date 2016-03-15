@@ -1,5 +1,7 @@
 <?php
 
+namespace BC\BcBrotli\Hook;
+
 /***************************************************************
  *  Copyright notice
  *
@@ -30,47 +32,48 @@ use TYPO3\CMS\Core\Utility\GeneralUtility;
  */
 class ResourceCompressHook
 {
-	/**
-	 * the compressor class
-	 *
-	 * @var \BC\BcBrotli\Compressor\ResourceCompressor
-	 */
-	protected $compressor = null;
+    /**
+     * the compressor class
+     *
+     * @var \BC\BcBrotli\Compressor\ResourceCompressor
+     */
+    protected $compressor = null;
 
-	/**
-	 * @param array $files
-	 */
-	public function processJS(&$files)
-	{
-		// compress js libraries
-		$files['jsLibs'] = $this->getCompressor()->compressJsFiles($files['jsLibs']);
-		// compress js files
-		$files['jsFiles'] = $this->getCompressor()->compressJsFiles($files['jsFiles']);
-		// compress css libraries
-		$files['jsFooterFiles'] = $this->getCompressor()->compressJsFiles($files['jsFooterFiles']);
-	}
+    /**
+     * @param array $files
+     */
+    public function processJS(&$files)
+    {
+        // compress js libraries
+        $files['jsLibs'] = $this->getCompressor()->compressJsFiles($files['jsLibs']);
+        // compress js files
+        $files['jsFiles'] = $this->getCompressor()->compressJsFiles($files['jsFiles']);
+        // compress css libraries
+        $files['jsFooterFiles'] = $this->getCompressor()->compressJsFiles($files['jsFooterFiles']);
+    }
 
-	/**
-	 * @param array $files
-	 */
-	public function processCSS(&$files)
-	{
-		// compress css libraries
-		$files['cssLibs'] = $this->getCompressor()->compressCssFiles($files['cssLibs']);
-		// compress css files
-		$files['cssFiles'] = $this->getCompressor()->compressCssFiles($files['cssFiles']);
-	}
+    /**
+     * @param array $files
+     */
+    public function processCSS(&$files)
+    {
+        // compress css libraries
+        $files['cssLibs'] = $this->getCompressor()->compressCssFiles($files['cssLibs']);
+        // compress css files
+        $files['cssFiles'] = $this->getCompressor()->compressCssFiles($files['cssFiles']);
+    }
 
-	/**
-	 * Returns instance of ResourceCompressor
-	 *
-	 * @return \BC\BcBrotli\Compressor\ResourceCompressor
-	 */
-	protected function getCompressor() {
+    /**
+     * Returns instance of ResourceCompressor
+     *
+     * @return \BC\BcBrotli\Compressor\ResourceCompressor
+     */
+    protected function getCompressor()
+    {
+        if ($this->compressor === null) {
+            $this->compressor = GeneralUtility::makeInstance(ResourceCompressor::class);
+        }
 
-		if ($this->compressor === NULL) {
-			$this->compressor = GeneralUtility::makeInstance(ResourceCompressor::class);
-		}
-		return $this->compressor;
-	}
+        return $this->compressor;
+    }
 }

@@ -1,7 +1,9 @@
 {
   "autoload": {
     "psr-4": {
-      "BC\\BcBrotli\\Compressor\\": "Classes/Compressor"
+      "BC\\BcBrotli\\Compressor\\": "Classes/Compressor",
+      "BC\\BcBrotli\\Module\\": "Classes/Module",
+      "BC\\BcBrotli\\Hook\\": "Classes/Hook"
     }
   }
 }
