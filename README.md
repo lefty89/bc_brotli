@@ -13,7 +13,23 @@ Requirements
 
 Installation
 ----------------
-Simply extract or clone the content into the *typo3conf* folder. After enabling the extension in the backend you have put the brotli binary into the extension folder at path: **Resources/Private/Bin.** Therefore you can use the prepared update script.
+Simply extract or clone the content into the *typo3conf* folder. After enabling the extension in the backend you have put the brotli binary into the extension folder at path: *Resources/Private/Bin.* Therefore you can use the prepared update script.
+
+![Extension Manager](https://raw.githubusercontent.com/lefty89/bc_brotli/master/Documentation/Images/AdministratorManual/ExtensionManager.png "Extension Manager")
+![Update Script](https://raw.githubusercontent.com/lefty89/bc_brotli/master/Documentation/Images/AdministratorManual/UpdateScript.png "Update Script")
+
+After the installation is completed you have to add the following code into the *.htaccess* file of your TYPO3 root directoy.
+
+```apache
+    <Files *.js.br>
+      AddType "text/javascript" .br
+      AddEncoding br .br
+    </Files>
+    <Files *.css.br>
+      AddType "text/css" .br
+      AddEncoding br .br
+    </Files>
+```
 
 Usage
 --------
