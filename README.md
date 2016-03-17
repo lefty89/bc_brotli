@@ -9,6 +9,7 @@ Requirements
 -------------------
 * TYPO3 CMS 7.6.0 or later
 * GNU Compiler Collection (GCC)
+* The update script requires a browser that support server send events, [see](http://caniuse.com/#feat=eventsource)
 
 Installation
 ----------------
