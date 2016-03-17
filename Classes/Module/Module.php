@@ -46,47 +46,47 @@ class Module
      *
      * @var int
      */
-    protected $step = 0;
+    private $step = 0;
 
     /**
      * git version
      *
      * @var string
      */
-    protected $git_version = '';
+    private $git_version = '';
 
     /**
      * compiler version
      *
      * @var string
      */
-    protected $gcc_version = '';
+    private $gcc_version = '';
 
     /**
      * git repository path
      *
      * @var string
      */
-    protected $repository = 'https://github.com/google/brotli';
+    private $repository = 'https://github.com/google/brotli';
 
     /**
      * git branch
      *
      * @var string
      */
-    protected $branch = 'master';
+    private $branch = 'master';
 
     /**
      * directory where the source is cloned
      *
      * @var string
      */
-    protected $tempDir = "typo3temp/Cache/Data/bc_brotli/";
+    private $tempDir = "typo3temp/Cache/Data/bc_brotli/";
 
     /**
      * @cosntruct
      */
-    function __construct()
+    public function __construct()
     {
         // set correct headers
         header('Content-Type: text/event-stream');
@@ -107,7 +107,7 @@ class Module
      *
      * @param string $message
      */
-    function msgStepNext($message)
+    private function msgStepNext($message)
     {
         $this->sendMessage(++$this->step, Module::STATE_LOADING, $message);
     }
@@ -118,7 +118,7 @@ class Module
      * @param int $state
      * @param string $message
      */
-    function msgStepFinished($state = Module::STATE_SUCCESS, $message = "")
+    private function msgStepFinished($state = Module::STATE_SUCCESS, $message = "")
     {
         $this->sendMessage($this->step, $state, $message);
     }
@@ -130,7 +130,7 @@ class Module
      * @return string
      * @throws \Exception
      */
-    function getSourceAsGit($dir)
+    private function getSourceAsGit($dir)
     {
         $this->msgStepNext("Cloning repository: $this->repository.git");
 
@@ -163,7 +163,7 @@ class Module
      * @return string
      * @throws \Exception
      */
-    function getSourceAsZip($dir)
+    private function getSourceAsZip($dir)
     {
         $this->msgStepNext("Download: $this->repository/archive/$this->branch.zip");
 
@@ -192,7 +192,7 @@ class Module
      * @return string
      * @throws \Exception
      */
-    function getBrotliSource($dir)
+    private function getBrotliSource($dir)
     {
         // get the path from the downloaded source
         return (!empty($this->git_version)) ?
@@ -206,7 +206,7 @@ class Module
      * @param string $binaryPath
      * @throws \Exception
      */
-    function compileBrotliBinary($binaryPath)
+    private function compileBrotliBinary($binaryPath)
     {
         $this->msgStepNext("Compile source code");
 
@@ -232,7 +232,7 @@ class Module
      * @param string $binary
      * @throws \Exception
      */
-    function moveBrotliBinary($binary)
+    private function moveBrotliBinary($binary)
     {
         $this->msgStepNext("Move binary to extension directory");
 
@@ -250,7 +250,7 @@ class Module
     /**
      * gets the installed git version
      */
-    function getGitVersion()
+    private function getGitVersion()
     {
         $this->msgStepNext("Checking Git version");
 
@@ -275,7 +275,7 @@ class Module
      *
      * @throws \Exception
      */
-    function getCompilerVersion()
+    private function getCompilerVersion()
     {
         $this->msgStepNext("Checking GCC version");
 
@@ -299,7 +299,7 @@ class Module
      * @return string
      * @throws \Exception
      */
-    function tempdir()
+    private function tempdir()
     {
         $this->msgStepNext("Creating temporary folder");
 
@@ -324,7 +324,7 @@ class Module
      * @param $dir
      * @return bool
      */
-    function recurseRmDir($dir)
+    private function recurseRmDir($dir)
     {
         $files = array_diff(scandir($dir), array('.', '..'));
         foreach ($files as $file) {
@@ -341,7 +341,7 @@ class Module
      * @param int $state
      * @param string $message
      */
-    function sendMessage($step, $state, $message = "")
+    private function sendMessage($step, $state, $message = "")
     {
         ob_end_clean();
 
@@ -358,7 +358,7 @@ class Module
     /**
      * closes the connection
      */
-    function closeConnection()
+    private function closeConnection()
     {
         ob_end_clean();
 
@@ -372,7 +372,7 @@ class Module
     /**
      * main function
      */
-    function main()
+    public function main()
     {
         // bug?
         $this->sendMessage(10, 0, "BUG");
