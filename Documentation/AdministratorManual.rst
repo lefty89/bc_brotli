@@ -30,7 +30,7 @@ Simply extract or clone the content into the *typo3conf* folder. After enabling 
 	:width: 500px
 	:alt: Update Script
 
-After the installation is completed you have to add the following code into the *.htaccess* file of your TYPO3 root directoy.
+After the installation is completed you have to add the following code into the *.htaccess* file of your TYPO3 root directory.
 
 .. code-block:: apache
 

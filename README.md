@@ -18,7 +18,7 @@ Simply extract or clone the content into the *typo3conf* folder. After enabling 
 ![Extension Manager](https://raw.githubusercontent.com/lefty89/bc_brotli/master/Documentation/Images/AdministratorManual/ExtensionManager.png "Extension Manager")
 ![Update Script](https://raw.githubusercontent.com/lefty89/bc_brotli/master/Documentation/Images/AdministratorManual/UpdateScript.png "Update Script")
 
-After the installation is completed you have to add the following code into the *.htaccess* file of your TYPO3 root directoy.
+After the installation is completed you have to add the following code into the *.htaccess* file of your TYPO3 root directory.
 
 ```apache
     <Files *.js.br>
